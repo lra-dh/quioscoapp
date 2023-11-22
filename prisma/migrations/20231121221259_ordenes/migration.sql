@@ -1,0 +1,26 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Orden] (
+    [id] INT NOT NULL IDENTITY(1,1),
+    [nombre] NVARCHAR(1000) NOT NULL,
+    [fecha] DATETIME2 NOT NULL,
+    [total] FLOAT(53) NOT NULL,
+    [pedido] NVARCHAR(1000) NOT NULL,
+    CONSTRAINT [Orden_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH
