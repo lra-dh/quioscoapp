@@ -2,19 +2,16 @@ import { PrismaClient } from '@prisma/client'
 
 export const getList = async () => {
     const prisma = new PrismaClient()
-    const categorias = await prisma.categoria.findMany();
-    return categorias;
+    const productos = await prisma.producto.findMany();
+    return productos;
 }
 
 export const getFirst = async (id) => {
     const prisma = new PrismaClient()
-    const categoria = await prisma.categoria.findFirst({
+    const producto = await prisma.categoria.findFirst({
         where: {
             id: Number(id)
-        },
-        include: {
-            productos: true
         }
     });
-    return categoria;
+    return producto;
 }
