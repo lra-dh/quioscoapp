@@ -4,11 +4,11 @@ import Producto from '@/app/ui/Producto';
 
 export async function generateMetadata({ params }) {
 
-  if (!params.id || isNaN(params.id)) {
+  if (!params.categoria_id || isNaN(params.categoria_id)) {
     return notFound();
   }
 
-  const categoria = await getFirst(params.id);
+  const categoria = await getFirst(params.categoria_id);
 
   if (!categoria) {
     return notFound();
@@ -20,8 +20,7 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = async ({ params }) => {
-
-  const categoria = await getFirst(params.id);
+  const categoria = await getFirst(params.categoria_id);
 
   if (!categoria) {
     return notFound();
