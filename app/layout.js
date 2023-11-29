@@ -1,8 +1,9 @@
 import './globals.css'
-import logo from "/public/assets/img/logo.svg"
+import Image from "next/image"
+
+import logo from "./public/assets/img/logo.svg"
 import { getList } from "./lib/categorias/data.js";
 import Categoria from "./ui/Categoria.jsx";
-import Image from "next/image"
 
 export const metadata = {
   title: 'Quiosco App',
@@ -20,7 +21,8 @@ export default async function RootLayout({ children }) {
           <Image src={logo} alt="Imagen logotipo" 
           width={300} height={100} 
           style={{ width: 300, height: 100, }} 
-          priority loading="eager" 
+          priority={true} 
+          loading="eager" 
           />
             <nav className="mt-10">
                 {categorias.map((categoria) => (

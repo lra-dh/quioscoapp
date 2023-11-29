@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
-import { formatearDinero } from "../lib/helpers/utils";
 import { useSearchParams,useRouter,usePathname } from "next/navigation";
-import  ModalGeneric   from "./Modal";
 import { useState,useEffect } from "react";
+
+import { formatearDinero } from "../lib/helpers/utils";
+
+import  ModalGeneric   from "./Modal";
 import ModalProducto from "./ModalProducto.jsx";
 
 const Producto = ({ producto, categoria }) => {

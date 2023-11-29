@@ -18,9 +18,9 @@ const ModalGeneric = ({ children, modalIsOpen, handleCloseModal, handleAfterOpen
     return (
         <Modal
             isOpen={modalIsOpen}
+            style={customStyles}
             onAfterOpen={handleAfterOpenModal}
             onRequestClose={handleCloseModal}
-            style={customStyles}
         >
             {children}
         </Modal>

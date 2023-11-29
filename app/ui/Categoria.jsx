@@ -6,7 +6,6 @@ const Categoria = ({ categoria }) => {
     const router = useRouter();
     const params = useParams()
     const { id, nombre, icono } = categoria
-
     const handleClick = () => {
         router.push(`/categoria/${id}`,{scroll:false})
     }

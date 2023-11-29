@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getFirst } from '../../lib/categorias/data';
+
 import Producto from '@/app/ui/Producto.jsx';
+import { getFirst } from '@/lib/categorias/data';
 
 export async function generateMetadata({ params }) {
 
@@ -34,7 +35,7 @@ const Page = async ({ params }) => {
       </p>
       <div className='grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
         {categoria.productos.map((producto) => (
-          <Producto key={producto.id} producto={producto} categoria={categoria}></Producto>
+          <Producto key={producto.id} categoria={categoria} producto={producto} ></Producto>
         ))}
       </div>
     </>

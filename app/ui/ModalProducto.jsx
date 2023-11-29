@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { formatearDinero } from "../lib/helpers/utils";
 import { useState } from "react";
+
+import { formatearDinero } from "../lib/helpers/utils";
 
 const ModalProducto = ({ producto, handleCloseModal }) => {
   const [cantidad, setCantidad] = useState(1);
