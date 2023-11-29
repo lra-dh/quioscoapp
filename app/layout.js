@@ -15,7 +15,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className='md:flex'>
+        <div id="__next" className='md:flex'>
           <aside className='md:w-4/12 xl:w-1/4 2xl:w:1/5'>
           <Image src={logo} alt="Imagen logotipo" 
           width={300} height={100} 

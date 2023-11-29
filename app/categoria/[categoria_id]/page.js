@@ -34,7 +34,7 @@ const Page = async ({ params }) => {
       </p>
       <div className='grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'>
         {categoria.productos.map((producto) => (
-          <Producto key={producto.id} producto={producto}></Producto>
+          <Producto key={producto.id} producto={producto} categoria={categoria}></Producto>
         ))}
       </div>
     </>
