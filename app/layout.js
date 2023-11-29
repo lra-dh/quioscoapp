@@ -1,7 +1,8 @@
 import './globals.css'
 import Image from "next/image"
 
-import logo from "./public/assets/img/logo.svg"
+import logo from "../public/assets/img/logo.svg"
+
 import { getList } from "./lib/categorias/data.js";
 import Categoria from "./ui/Categoria.jsx";
 
@@ -40,3 +41,4 @@ export default async function RootLayout({ children }) {
     </html>
   )
 }
+ 
