@@ -1,7 +1,7 @@
 import './globals.css'
 import logo from "/public/assets/img/logo.svg"
 import { getList } from "./lib/categorias/data.js";
-import Categoria from "./ui/Categoria";
+import Categoria from "./ui/Categoria.jsx";
 import Image from "next/image"
 
 export const metadata = {

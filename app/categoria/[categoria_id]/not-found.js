@@ -5,7 +5,7 @@ export const metadata = {
 const Page = () => {
   return (
     <h1 className="text-4xl font-black">No Encontrado</h1>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

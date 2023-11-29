@@ -1,18 +1,19 @@
-'use client'
-import Image from "next/image"
-import { formatearDinero } from "../lib/helpers/utils"
-import { useSearchParams,useRouter,usePathname,useParams } from "next/navigation"
-import  ModalGeneric   from '../ui/Modal'
+"use client";
+import Image from "next/image";
+import { formatearDinero } from "../lib/helpers/utils";
+import { useSearchParams,useRouter,usePathname } from "next/navigation";
+import  ModalGeneric   from "./Modal";
 import { useState,useEffect } from "react";
+import ModalProducto from "./ModalProducto.jsx";
 
 const Producto = ({ producto, categoria }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const { replace }  = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const params = new URLSearchParams(searchParams);
 
   const handleClick = () => {
-    const params = new URLSearchParams(searchParams);
     params.set('agregar', producto.id);
     replace(`${pathname}?${params.toString()}`,{scroll:false});
     setIsOpen(true);
@@ -27,6 +28,12 @@ const Producto = ({ producto, categoria }) => {
       setIsOpen(false);
     }
   }, [searchParams,producto])
+
+  const handleCloseModal = () => {
+    params.delete('agregar');
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
+    setIsOpen(false);
+}
 
   return (
     <>
@@ -51,10 +58,11 @@ const Producto = ({ producto, categoria }) => {
         </button>
       </div>
     </div>
-    {<ModalGeneric modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}>
-      <h1>{producto.nombre}</h1>
-      <h1>{producto.id}</h1>
-      </ModalGeneric>}    
+      {
+        <ModalGeneric modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal}>
+          <ModalProducto producto={producto} handleCloseModal={handleCloseModal} />
+        </ModalGeneric>
+      }    
     </>
     
   )

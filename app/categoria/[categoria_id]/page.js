@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getFirst } from '../../lib/categorias/data';
-import Producto from '@/app/ui/Producto';
+import Producto from '@/app/ui/Producto.jsx';
 
 export async function generateMetadata({ params }) {
 
