@@ -11,15 +11,21 @@ import ModalProducto from "./ModalProducto.jsx";
 const Producto = ({ producto, categoria }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace }  = useRouter();
+  const { replace, push }  = useRouter();
   const [modalIsOpen, setIsOpen] = useState(false);
   const params = new URLSearchParams(searchParams);
 
+  // const handleClick = () => {
+  //   params.set('agregar', producto.id);
+  //   replace(`${pathname}?${params.toString()}`,{scroll:false});
+  //   setIsOpen(true);
+  // }
+
   const handleClick = () => {
-    params.set('agregar', producto.id);
-    replace(`${pathname}?${params.toString()}`,{scroll:false});
-    setIsOpen(true);
-  }
+    push(`/categoria/${categoria.id}/producto/${producto.id}`, {
+      scroll: false,
+    });
+  };
 
   useEffect(() => {
     if (searchParams.has('agregar') && Number(producto.id) === Number(searchParams.get('agregar'))) {

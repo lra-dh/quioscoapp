@@ -1,10 +1,9 @@
 import { notFound } from 'next/navigation';
 
 import Producto from '../../ui/Producto.jsx';
-import { getFirst } from '../../lib/categorias/data';
+import { getFirst } from '../../lib/categorias/data.js';
 
 export async function generateMetadata({ params }) {
-
   if (!params.categoria_id || isNaN(params.categoria_id)) {
     return notFound();
   }
