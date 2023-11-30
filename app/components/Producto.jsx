@@ -3,10 +3,11 @@ import Image from "next/image";
 import { useSearchParams,useRouter,usePathname } from "next/navigation";
 import { useState,useEffect } from "react";
 
-import { formatearDinero } from "../lib/helpers/utils";
-
 import  ModalGeneric   from "./Modal";
 import ModalProducto from "./ModalProducto.jsx";
+
+import { formatearDinero } from "@/lib/helpers/utils";
+
 
 const Producto = ({ producto, categoria }) => {
   const searchParams = useSearchParams();
