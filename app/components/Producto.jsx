@@ -1,48 +1,17 @@
 "use client";
 import Image from "next/image";
-import { useSearchParams,useRouter,usePathname } from "next/navigation";
-import { useState,useEffect } from "react";
-
-import  ModalGeneric   from "./Modal";
-import ModalProducto from "./ModalProducto.jsx";
+import { useRouter } from "next/navigation";
 
 import { formatearDinero } from "@/lib/helpers/utils";
 
-
 const Producto = ({ producto, categoria }) => {
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace, push }  = useRouter();
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const params = new URLSearchParams(searchParams);
-
-  // const handleClick = () => {
-  //   params.set('agregar', producto.id);
-  //   replace(`${pathname}?${params.toString()}`,{scroll:false});
-  //   setIsOpen(true);
-  // }
+  const { push }  = useRouter();
 
   const handleClick = () => {
     push(`/categoria/${categoria.id}/producto/${producto.id}`, {
       scroll: false,
     });
   };
-
-  useEffect(() => {
-    if (searchParams.has('agregar') && Number(producto.id) === Number(searchParams.get('agregar'))) {
-      setIsOpen(true);
-      console.log('true'); 
-    }
-    else {
-      setIsOpen(false);
-    }
-  }, [searchParams,producto])
-
-  const handleCloseModal = () => {
-    params.delete('agregar');
-    replace(`${pathname}?${params.toString()}`, { scroll: false });
-    setIsOpen(false);
-}
 
   return (
     <>
@@ -67,11 +36,6 @@ const Producto = ({ producto, categoria }) => {
         </button>
       </div>
     </div>
-      {
-        <ModalGeneric modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal}>
-          <ModalProducto producto={producto} handleCloseModal={handleCloseModal} />
-        </ModalGeneric>
-      }    
     </>
     
   )

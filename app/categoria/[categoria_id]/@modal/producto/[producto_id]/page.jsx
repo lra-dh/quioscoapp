@@ -1,19 +1,34 @@
-'use client'
-import useSWR from 'swr'
+"use client";
+import useSWR from "swr";
+import { useRouter , usePathname } from "next/navigation";
+import { useState,useEffect } from "react";
 
-import ModalGeneric from "@/app/components/Modal.jsx";
 import ModalProducto from "@/app/components/ModalProducto.jsx";
-import { fetcher }  from "@/lib/helpers/utils";
+import { fetcher } from "@/lib/helpers/utils";
 
-const Page = () => {
-  console.log(fetcher);
-  console.log(useSWR('http://localhost:3000/api/producto', fetcher)) 
-  // console.log(data, error, isLoading);
-  return (
-    <ModalGeneric modalIsOpen={true} handleCloseModal={null}>
-      <ModalProducto producto={null} handleCloseModal={null} />
-    </ModalGeneric>
+const Page = ({ params }) => {
+  const { push } = useRouter();
+  const pathname = usePathname();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { data, error, isLoading } = useSWR(
+    `/api/producto/${params.producto_id}`,
+    fetcher
   );
+
+  useEffect(() => {
+    if (data && pathname.includes("producto")) {
+      setModalIsOpen(true);
+    }
+  }, [data,pathname]);
+
+  if (!data || error || isLoading) return null;
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+    push(`/categoria/${params.categoria_id}`, { scroll: false });
+  };
+
+  return <ModalProducto producto={data} modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal} />;
 };
 
 export default Page;
