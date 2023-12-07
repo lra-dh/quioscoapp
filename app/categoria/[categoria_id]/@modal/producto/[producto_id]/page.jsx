@@ -1,7 +1,7 @@
 "use client";
 import useSWR from "swr";
-import { useRouter , usePathname } from "next/navigation";
-import { useState,useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 import ModalProducto from "@/app/components/ModalProducto.jsx";
 import { fetcher } from "@/lib/helpers/utils";
@@ -19,7 +19,7 @@ const Page = ({ params }) => {
     if (data && pathname.includes("producto")) {
       setModalIsOpen(true);
     }
-  }, [data,pathname]);
+  }, [data, pathname]);
 
   if (!data || error || isLoading) return null;
 
@@ -28,7 +28,13 @@ const Page = ({ params }) => {
     push(`/categoria/${params.categoria_id}`, { scroll: false });
   };
 
-  return <ModalProducto producto={data} modalIsOpen={modalIsOpen} handleCloseModal={handleCloseModal} />;
+  return (
+    <ModalProducto
+      producto={data}
+      modalIsOpen={modalIsOpen}
+      handleCloseModal={handleCloseModal}
+    />
+  );
 };
 
 export default Page;

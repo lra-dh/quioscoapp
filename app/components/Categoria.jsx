@@ -1,17 +1,17 @@
 'use client'
 import Image from "next/image"
-import { useRouter, useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 
 const Categoria = ({ categoria }) => {
     const router = useRouter();
-    const params = useParams()
+    const params = useParams();
     const { id, nombre, icono } = categoria
     const handleClick = () => {
         router.push(`/categoria/${id}`,{scroll:false})
     }
 
     return (
-        <div className={`${Number(params?.id) === Number(id) ? "bg-amber-400" : ""} 
+        <div className={`${Number(params?.categoria_id) === Number(id) ? "bg-amber-400" : ""} 
           flex item-center gap-4 w-full border p-5 hover:bg-amber-400`}>
             <Image 
                 src={`/assets/img/icono_${icono}.svg`}
