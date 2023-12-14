@@ -1,9 +1,11 @@
 import './globals.css'
 import Image from "next/image"
+import { ToastContainer } from 'react-toastify';
 
 import logo from "@/public/assets/img/logo.svg"
 import { getList } from "@/lib/categorias/data.js";
 import Categoria from "@/app/components/Categoria.jsx";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: 'Quiosco App',
@@ -35,6 +37,7 @@ export default async function RootLayout({ children }) {
               {children}
             </div>
           </main>
+          <ToastContainer />
         </div>
       </body>
     </html>
